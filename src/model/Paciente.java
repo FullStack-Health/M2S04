@@ -1,4 +1,6 @@
-public class Paciente extends Pessoa{
+package model;
+
+public class Paciente extends Pessoa {
     private double peso;
     private double altura;
 
@@ -11,9 +13,13 @@ public class Paciente extends Pessoa{
         super(id, nome, idade);//Utilizando do construtor parametrizado da superclasse
         if (peso > 0 && peso < 300) {
             this.peso = peso;
+        }else{
+            throw new RuntimeException("Peso não corresponde ao range > 0 && < 300");
         }
         if (altura > 0 && altura < 4) {
             this.altura = altura;
+        }else{
+            throw new RuntimeException("Altura não corresponde ao range > 0 && < 4");
         }
     }
 
@@ -31,12 +37,16 @@ public class Paciente extends Pessoa{
     public void setPeso(double peso) {
         if (peso > 0 && peso < 300) {
             this.peso = peso;
+        }else{
+            throw new RuntimeException("Peso não corresponde ao range > 0 && < 300");
         }
     }
 
     public void setAltura(double altura) {
         if (altura > 0 && altura < 4) {
             this.altura = altura;
+        }else{
+            throw new RuntimeException("Altura não corresponde ao range > 0 && < 4");
         }
     }
 
@@ -56,7 +66,7 @@ public class Paciente extends Pessoa{
 
     @Override
     public String toString() {
-        return "Paciente{" +
+        return "model.Paciente{" +
                 super.toString() +
                 ", peso=" + peso +
                 ", altura=" + altura +

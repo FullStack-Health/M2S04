@@ -1,7 +1,11 @@
+package model;
+
+import interfaces.UserRepository;
+
 import java.util.HashMap;
 import java.util.Map;
 
-public class Hospital implements UserRepository{
+public class Hospital implements UserRepository {
 
     private Map<String, Pessoa> pacientes;
 
@@ -13,6 +17,8 @@ public class Hospital implements UserRepository{
     public void adicionarUser(Pessoa pessoa){
         if(pessoa != null && !pacientes.containsKey(pessoa.getNome())){
             pacientes.put(pessoa.getNome(), pessoa); //Armazenar o dado no Map
+        }else{
+            throw new RuntimeException("Key{"+ pessoa.getNome() +"} já se encontra armazenada no Map.");
         }
     }
 

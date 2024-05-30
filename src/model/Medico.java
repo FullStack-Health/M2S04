@@ -1,4 +1,8 @@
-public class Medico extends Pessoa implements CalculoSalario{
+package model;
+
+import interfaces.CalculoSalario;
+
+public class Medico extends Pessoa implements CalculoSalario {
     private double salario;
     private String crm;
 
@@ -6,8 +10,16 @@ public class Medico extends Pessoa implements CalculoSalario{
 
     public Medico(Integer id, String nome, Integer idade, double salario, String crm) {
         super(id, nome, idade);
-        this.salario = salario;
-        this.crm = crm;
+        if(salario > 0){
+            this.salario = salario;
+        }else{
+            throw new RuntimeException("Salario não corresponde a um valor > 0");
+        }
+        if(crm.length() == 6){
+            this.crm = crm;
+        }else {
+            throw new RuntimeException("CRM não corresponde ao tamanho de digitos validos!");
+        }
     }
 
     public double getSalario() {
@@ -15,7 +27,11 @@ public class Medico extends Pessoa implements CalculoSalario{
     }
 
     public void setSalario(double salario) {
-        this.salario = salario;
+        if(salario > 0){
+            this.salario = salario;
+        }else{
+            throw new RuntimeException("Salario não corresponde a um valor > 0");
+        }
     }
 
     public String getCrm() {
@@ -23,7 +39,11 @@ public class Medico extends Pessoa implements CalculoSalario{
     }
 
     public void setCrm(String crm) {
-        this.crm = crm;
+        if(crm.length() == 6){
+            this.crm = crm;
+        }else{
+            throw new RuntimeException("CRM não corresponde ao tamanho de digitos validos!");
+        }
     }
 
     //Implementação do método abstrato
@@ -44,7 +64,7 @@ public class Medico extends Pessoa implements CalculoSalario{
 
     @Override
     public String toString() {
-        return "Medico{" +
+        return "model.Medico{" +
                 super.toString() +
                 ", salario=" + salario +
                 ", crm='" + crm + '\'' +

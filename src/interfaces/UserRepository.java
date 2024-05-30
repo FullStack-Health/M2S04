@@ -1,3 +1,7 @@
+package interfaces;
+
+import model.Pessoa;
+
 public interface UserRepository {
 
     void adicionarUser(Pessoa pessoa);
