@@ -13,6 +13,6 @@ public enum OpcaoMenu {
     }
 
     public int getCodigo(){
-        return this.codigo;
+        return codigo;
     }
 }
